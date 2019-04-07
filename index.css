@@ -1,0 +1,73 @@
+body {
+  font-family: 'Open Sans', sans-serif;
+  margin: 0;
+  padding: 0;
+  border: 0;
+}
+
+#nav {
+  margin: 0;
+  padding: .5em 2em;
+  background-color: #ea5455;
+}
+
+#logo {
+  font-family: 'Pacifico', cursive;
+  font-size: 2.5em;
+  color: white;
+}
+
+#well {
+  background-color: #2d4059;
+  color: white;
+  padding: 4em;
+}
+
+#well h1 {
+  color: white;
+  text-align: center;
+  padding-bottom: 1.5em;
+}
+
+#counter {
+  font-family: 'Baloo Chettan', cursive;
+  margin: auto;
+  width: 720px;
+  text-align: center;
+  font-size: 1.5em;
+  padding-bottom: 1.5em;
+}
+
+.stat {
+  display: inline-block;
+  background-color: #f07b3f;
+  width: 200px;
+  margin: 10px;
+  padding: 20px 10px;
+  border-radius: 25px;
+}
+
+.stat-number {
+  font-size: 1.5em;
+  padding-bottom: 10px;
+}
+
+#content {
+  width: 800px;
+  margin: auto;
+}
+
+h2 {
+  text-align: center;
+}
+
+p {
+  padding: 10px 0;
+}
+
+.code {
+  font-family: 'Source Code Pro', monospace;
+  background-color: #eee;
+  padding: 1em;
+  margin: auto;
+}
