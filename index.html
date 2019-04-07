@@ -44,7 +44,7 @@
       <h2>Becoming a Mirror</h2>
       <p>Anyone with a linux machine, a stable internet connection, and 4TB of storage can become a secondary mirror. It's super easy to get setup! First, install rsync and run:</p>
       <div class="code">
-        rsync rsync://primary.freajs.com [DEST]
+        rsync rsync://primary.freajs.org [DEST]
       </div>
       <p>Next, install nginx and use the following config:</p>
       <pre class="code">
@@ -81,7 +81,7 @@ server {
     }
 
     location @npm {
-        proxy_pass https://primary.freajs.com;
+        proxy_pass https://primary.freajs.org;
     }
 
     error_page  404              /-/404.json;
@@ -92,9 +92,11 @@ server {
     </div>
     <script>
       const sizeElem = document.getElementById("size_number");
+      const startDate = 1554672001344;
+      const step = .01;
       setInterval(function() {
-        const value = Number(sizeElem.innerText);
-        sizeElem.innerText = value + 1;
+        const value = ((Date.now() - startDate) * step) | 0;
+        sizeElem.innerText = value > 4000000 ? 4000000 : value;
       }, 100);
     </script>
   </body>
