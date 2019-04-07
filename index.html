@@ -32,7 +32,7 @@
       <h2>Getting Started</h2>
       <p>Simply use the frea cli instead of npm!</p>
       <div class="code">
-        $ npm i -g @frea/cli<br>
+        $ npm i -g frea<br>
         ...<br>
         $ frea --help<br>
       </div>
@@ -40,7 +40,7 @@
       <div class="code">
         $ frea --yarn --help
       </div>
-      <p>The cli tool takes care of proxying requests that need authentication to the officially npm registry, everything else gets served by mirrors!</p>
+      <p>The cli tool takes care of proxying requests that need authentication to the official npm registry, everything else gets served by mirrors!</p>
       <h2>Becoming a Mirror</h2>
       <p>Anyone with a linux machine, a stable internet connection, and 4TB of storage can become a secondary mirror. It's super easy to get setup! First, install rsync and run:</p>
       <div class="code">
@@ -77,10 +77,10 @@ server {
                   $uri/-/index.json
                   $uri/index.json
                   $uri.json
-                  @npm;
+                  @primary;
     }
 
-    location @npm {
+    location @primary {
         proxy_pass https://primary.freajs.org;
     }
 
