@@ -44,7 +44,7 @@
       <h2>Becoming a Mirror</h2>
       <p>Anyone with a linux machine, a stable internet connection, and 4TB of storage can become a secondary mirror. It's super easy to get setup! First, install rsync and run:</p>
       <div class="code">
-        rsync rsync://primary.freajs.org [DEST]
+        rsync -r --progress rsync://primary.freajs.org:registry [DEST]
       </div>
       <p>Next, install nginx and use the following config:</p>
       <pre class="code">
