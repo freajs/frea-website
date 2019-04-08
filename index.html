@@ -93,7 +93,7 @@ server {
     <script>
       const sizeElem = document.getElementById("size_number");
       const startDate = 1554672001344;
-      const step = .01;
+      const step = .0037;
       setInterval(function() {
         const value = ((Date.now() - startDate) * step) | 0;
         sizeElem.innerText = value > 4000000 ? 4000000 : value;
