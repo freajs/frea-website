@@ -40,28 +40,30 @@
         of large players involved, yet the burden of hosting the registry has
         fallen to
         <a href="https://npmjs.com">a single company.</a>
-        There have been many efforts to build new federated or decentralized
+        There have been many efforts to build federated or decentralized
         JavaScript package registries, but none of them have solved for the
-        global namespace in a way that doesn't fragment the community. Frea is
-        different.
+        global namespace in a way that doesn't fragment the community.
+      </p>
+      <p>
+        Frea is different
       </p>
       <p>
         Frea doesn't attempt to create a new package registry. Inspired by
-        popular linux package managers, Frea is a collection of infrastructure
+        popular Linux package managers, Frea is a collection of infrastructure
         pieces that, together, allows the JavaScript community to donate
         resources to help host the <i>existing</i> registry.
       </p>
       <h2>Architecture</h2>
       <p>
-        We use cloudflare workers to load balance across our donated mirrors.
-        For example, below is a diagrame of our infrastructure running on GCP.
-        When the mirrors don't have content, the workers will proxy the request
-        back to npm to avoid race conditions with syncing between the mirrors
-        for recent packages.
+        We use Cloudflare workers to load balance across our donated mirrors.
+        For example, below is a diagram of our infrastructure running on GCP.
+        When the mirrors don't have content, the workers proxy the request back
+        to npm to avoid race conditions with syncing between the mirrors for
+        new packages.
         <br/>
         <br/>
         By baking load balancing and routing into the network layer with
-        cloudflare workers, we reduce the availability requirements of donated
+        Cloudflare workers, we reduce the availability requirements of donated
         mirrors. We can failover between mirrors at the network level without
         surfacing failures to users.
       </p>
