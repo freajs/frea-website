@@ -3,99 +3,57 @@
     <link rel="stylesheet" href="./index.css">
     <link href="https://fonts.googleapis.com/css?family=Pacifico" rel="stylesheet">
     <link href="https://yarnpkg.com/en/package/normalize.css" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css?family=Baloo+Chettan" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
   </head>
   <body>
-    <div id="nav">
-      <div id="logo">Frea</div>
+    <div class="nav">
+      <div class="logo">F</div>
     </div>
-    <div id="well">
-      <h1>Mirroring the npm registry for much good</h1>
-      <div id="counter">
-        <div class="stat">
-          <div class="stat-number">1</div>
-          <div>Primary<br>Mirror</div>
-        </div><!--
-      --><div class="stat">
-          <div class="stat-number">0</div>
-          <div >Secondary<br>Mirrors</div>
-        </div><!--
-      --><div class="stat">
-          <div id="size_number" class="stat-number">0</div>
-          <div id="size_name">MegaBytes<br>Mirrored</div>
+    <div class="well">
+      <div class="container">
+        <h1>Frea</h1>
+        <h2>Supporting the global javascript namespace<h2>
+        <div class="code">
+          npm config set registry https://registry.freajs.org
         </div>
       </div>
     </div>
+    <div class="nav"></div>
     <div id="content">
       <h2>Getting Started</h2>
-      <p>Simply use the frea cli instead of npm!</p>
+      <p>To use Frea globally with npm</p>
       <div class="code">
-        $ npm i -g frea<br>
-        ...<br>
-        $ frea --help<br>
+        npm config set registry https://registry.freajs.org
       </div>
-      <p>For yarn, use the --yarn flag!</p>
+      <p>To use Frea globally with yarn</p>
       <div class="code">
-        $ frea --yarn --help
+        yarn config set registry https://registry.freajs.org
       </div>
-      <p>The cli tool takes care of proxying requests that need authentication to the official npm registry, everything else gets served by mirrors!</p>
-      <h2>Becoming a Mirror</h2>
-      <p>Anyone with a linux machine, a stable internet connection, and 4TB of storage can become a secondary mirror. It's super easy to get setup! First, install rsync and run:</p>
+      <p>To use Frea for a single project</p>
       <div class="code">
-        rsync -r --progress rsync://primary.freajs.org:registry [DEST]
+        cd /path/to/project
+        <br/>
+        echo "https://registry.freajs.org" >> .npmrc
       </div>
-      <p>Next, install nginx and use the following config:</p>
-      <pre class="code">
-server {
-    listen       80;
-    server_name  registry.freajs.org;
-    charset utf-8;
-    root   [RSYNC DESTINATION FROM ABOVE];
-    index  index.json;
-
-    #cache the crap out of the tarballs
-    location ~* ^.+\.(?:tgz)$ {
-        expires 30d;
-        tcp_nodelay off;
-        open_file_cache max=3000 inactive=120s;
-        open_file_cache_valid 45s;
-        open_file_cache_min_uses 2;
-        open_file_cache_errors off;
-    }
-
-    #don't cache the main index
-    location /-/index.json {
-        expires -1;
-    }
-
-    #cache all json by modified time
-    location / {
-        expires modified +15m;
-        try_files $uri
-                  $uri/-/index.json
-                  $uri/index.json
-                  $uri.json
-                  @primary;
-    }
-
-    location @primary {
-        proxy_pass https://primary.freajs.org;
-    }
-}</pre>
-      <p>Finally, setup a cron job that runs the rsync command. We recommend syncing multiple times an hour, at a bare minimum sync once every 24 hours.</p>
-      <p>Now shoot us an email at frea@blankenship.io w/ your domain name or IP address and we will add you to the mirrors</p>
-      <p>Note: we have lax definitions for availability. We can support long contiguous outages for mirros, we do health checks and graceful failovers, so we won't hold 100% downtime against you. But we expect that, when you are up, you are up. Consistent partial outages cause flakey npm installs, and that is a bummer for everyone.
+      <h2>What is Frea?</h2>
+      <p>
+        The JavaScript community has
+        <a href="https://openjsf.org/members/">a lot</a>
+        of large players involved yet the burden of hosting the registry has
+        fallen to
+        <a href="https://npmjs.com">a single company.</a>
+        There have been many efforts to build new federated or decentralized
+        JavaScript package registries, but none of them have solved for the
+        global namespace in a way that doesn't fragment the community. Frea is
+        different.
+      </p>
+      <p>
+        Frea doesn't attempt to create a new package registry. Inspired by
+        popular linux package managers, Frea is a collection of infrastructure
+        pieces that, together, allows the JavaScript community to donate
+        resources to help host the <i>existing</i> registry.
+      </p>
     </div>
-    <script>
-      const sizeElem = document.getElementById("size_number");
-      const startDate = 1554672001344;
-      const step = .0057;
-      setInterval(function() {
-        const value = ((Date.now() - startDate) * step) | 0;
-        sizeElem.innerText = value > 4000000 ? 4000000 : value;
-      }, 100);
-    </script>
   </body>
 </html>

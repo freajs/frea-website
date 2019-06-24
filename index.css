@@ -5,37 +5,52 @@ body {
   border: 0;
 }
 
-#nav {
-  margin: 0;
+.nav {
   padding: .5em 2em;
   background-color: #ea5455;
 }
 
-#logo {
+.logo {
   font-family: 'Pacifico', cursive;
   font-size: 2.5em;
   color: white;
 }
 
-#well {
+.well {
+  background-color: #ea5455;
+  color: white;
+  padding: 4em 0;
+}
+
+.well .container {
+  width: 800px;
+  margin: auto;
+}
+
+.well h1 {
+  font-family: 'Pacifico', cursive;
+  font-size: 4em;
+  color: white;
+  text-align: center;
+  padding: .5em 0;
+  font-weight: 400;
+  margin: 0;
+}
+
+.well h2 {
+  color: #faa;
+  padding-bottom: 1em;
+  margin: 0;
+}
+
+.well .code {
   background-color: #2d4059;
   color: white;
-  padding: 4em;
-}
-
-#well h1 {
-  color: white;
+  padding: 20px;
+  margin: 0;
   text-align: center;
-  padding-bottom: 1.5em;
-}
-
-#counter {
-  font-family: 'Baloo Chettan', cursive;
-  margin: auto;
-  width: 720px;
-  text-align: center;
-  font-size: 1.5em;
-  padding-bottom: 1.5em;
+  display: block;
+  font-size: 20px;
 }
 
 .stat {
@@ -55,19 +70,23 @@ body {
 #content {
   width: 800px;
   margin: auto;
+  font-size: 1.25em;
 }
 
 h2 {
+  margin-top: 3em;
   text-align: center;
+}
+
+.code {
+  border-radius: 10px;
+  font-family: 'Source Code Pro', monospace;
+  background-color: #eee;
+  padding: 1em;
+  margin: auto;
 }
 
 p {
   padding: 10px 0;
 }
 
-.code {
-  font-family: 'Source Code Pro', monospace;
-  background-color: #eee;
-  padding: 1em;
-  margin: auto;
-}
