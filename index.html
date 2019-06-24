@@ -54,6 +54,23 @@
         pieces that, together, allows the JavaScript community to donate
         resources to help host the <i>existing</i> registry.
       </p>
+      <h2>Architecture</h2>
+      <p>
+        We use cloudflare workers to load balance across our donated mirrors.
+        For example, below is a diagrame of our infrastructure running on GCP.
+        When the mirrors don't have content, the workers will proxy the request
+        back to npm to avoid race conditions with syncing between the mirrors
+        for recent packages.
+        <br/>
+        <br/>
+        By baking load balancing and routing into the network layer with
+        cloudflare workers, we reduce the availability requirements of donated
+        mirrors. We can failover between mirrors at the network level without
+        surfacing failures to users.
+      </p>
+      <div class="arch">
+        <img src="./arch.png"/>
+      </div>
       <h2>Interested in Donating?</h2>
       <p>
         We don't have anything automated for on-boarding mirrors yet. If you
