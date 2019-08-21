@@ -32,20 +32,33 @@ body {
   color: white;
 }
 
+.nav .links {
+  display: flex;
+  align-items: center;
+}
+
+.nav .links > * {
+  padding-right: 1em;
+}
+
 .nav a:link {
   color: white;
+  text-decoration: none;
 }
 
 .nav a:visited {
   color: white;
+  text-decoration: none;
 }
 
 .nav a:hover {
   color: white;
+  text-decoration: none;
 }
 
 .nav a:active {
   color: white;
+  text-decoration: none;
 }
 
 .nav .logo {
